@@ -1,17 +1,15 @@
 import { getBlogs } from "../services/blogs";
+import Link from "next/link";
 
 const Blogs = () => {
-  const blogs = getBlogs();
+  const blogs = getBlogs().sort((a, b) => b.likes - a.likes);
   return (
     <div>
       <h2>Blogs</h2>
       <ul>
         {blogs.map((blog) => (
           <li key={blog.id}>
-            <div>{blog.title}</div>
-            <div>{blog.author}</div>
-            <div>{blog.url}</div>
-            <div>{blog.likes}</div>
+            <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
           </li>
         ))}
       </ul>
