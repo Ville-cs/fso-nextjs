@@ -8,11 +8,6 @@ const Blogs = async ({
 }) => {
   const { filter } = await searchParams;
   const blogs = await getBlogs(filter || "");
-  // const blogs = filter
-  //   ? allBlogs.filter((blog) =>
-  //       blog.title.toLowerCase().includes(filter.toLowerCase()),
-  //     )
-  //   : allBlogs;
   blogs.sort((a, b) => b.likes - a.likes);
 
   return (
