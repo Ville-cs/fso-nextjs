@@ -28,12 +28,15 @@ export const createBlog = async (
     return {
       error: "title, author, and url must contain at least 5 characters",
       values: { title, author, url },
+      success: false,
     };
   }
-
   await addBlog(title, author, url);
   revalidatePath("/blogs");
-  redirect("/blogs");
+  return {
+    error: "",
+    success: true,
+  };
 };
 
 export const incrementBlogLikes = async (formData: FormData) => {
