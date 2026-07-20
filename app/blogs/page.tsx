@@ -12,24 +12,27 @@ const Blogs = async ({
 
   return (
     <div>
-      <h2 className="text-5xl my-10">Blogs</h2>
-      <form action="/blogs">
+      <h2 className="text-5xl mr-20 my-10 text-center">Blogs</h2>
+      <form action="/blogs" className="flex justify-center items-center mb-10">
         <input
           type="text"
           name="filter"
           defaultValue={filter || ""}
-          className="bg-white text-black mr-5"
+          className="bg-white text-black mr-5 py-2"
         />
         <button
           type="submit"
-          className="rounded-2xl bg-gray-500 px-2 mb-5 hover:text-black"
+          className="rounded-2xl bg-blue-500 p-2 hover:text-black"
         >
           filter blogs by title
         </button>
       </form>
       <ul>
         {blogs.map((blog) => (
-          <li key={blog.id} className="my-3 hover:text-blue-400 text-2xl">
+          <li
+            key={blog.id}
+            className="my-3 p-5 border hover:text-blue-400 text-2xl"
+          >
             <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
           </li>
         ))}
