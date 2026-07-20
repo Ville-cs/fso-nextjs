@@ -36,6 +36,13 @@
       "when": 1784283036146,
       "tag": "0004_lonely_revanche",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1784556242357,
+      "tag": "0005_easy_steel_serpent",
+      "breakpoints": true
     }
   ]
 }
