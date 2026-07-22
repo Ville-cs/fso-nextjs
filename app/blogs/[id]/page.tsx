@@ -29,10 +29,7 @@ const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       </Description>
       <form action={incrementBlogLikes}>
         <input type="hidden" name="id" value={blog.id} />
-        <button
-          type="submit"
-          className="p-5 rounded-xl text-3xl hover:bg-blue-500 bg-green-900 text-white"
-        >
+        <button type="submit" className="button">
           Like this blog
         </button>
       </form>

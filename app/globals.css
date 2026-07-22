@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .button {
+    @apply py-5 px-10 text-3xl rounded-2xl hover:bg-green-900 bg-blue-900;
+  }
+}

@@ -5,7 +5,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({ ...props }: InputProps) => {
-  return <input {...props} className="ml-5 bg-gray-700" />;
+  return <input {...props} className="ml-8 bg-gray-700" />;
 };
 
 export default Input;

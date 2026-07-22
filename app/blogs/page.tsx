@@ -20,10 +20,7 @@ const Blogs = async ({
           defaultValue={filter || ""}
           className="bg-white text-black mr-5 py-2"
         />
-        <button
-          type="submit"
-          className="rounded-2xl bg-blue-500 p-2 hover:text-black"
-        >
+        <button type="submit" className="button p-5">
           filter blogs by title
         </button>
       </form>

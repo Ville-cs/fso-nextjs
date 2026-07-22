@@ -1,13 +1,16 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { users } from "@/db/schema";
+import { getCurrentUser } from "../services/session";
+import { randomUUID } from "crypto";
 
 export const registerUser = async (
-  prevState: { error: string },
+  _prevState: { error: string },
   formData: FormData,
 ) => {
   const username = (formData.get("username") as string)?.trim();
@@ -41,4 +44,17 @@ export const registerUser = async (
   await db.insert(users).values({ username, name, passwordHash });
 
   redirect("/login");
+};
+
+export const generateToken = async () => {
+  const user = await getCurrentUser();
+  if (!user) redirect("/login");
+
+  const uuid = randomUUID();
+  await db
+    .update(users)
+    .set({ token: uuid })
+    .where(eq(users.id, user.id))
+    .returning({ token: users.token });
+  revalidatePath("/me");
 };

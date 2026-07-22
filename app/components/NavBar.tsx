@@ -1,11 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import NavLink from "./NavLink";
+import { redirect } from "next/navigation";
 
 export default function NavBar() {
   const { data: session } = useSession();
+
+  const signOutAndRedirect = () => {
+    signOut();
+    redirect("/");
+  };
 
   return (
     <nav className="px-50 flex items-center gap-5 py-5 bg-gray-700">
@@ -19,9 +24,9 @@ export default function NavBar() {
         <>
           <NavLink href="/blogs/new">create new</NavLink>
           <div className="ml-auto flex items-center gap-5">
-            <em>{session.user?.name} logged in </em>{" "}
+            <NavLink href="/me">me</NavLink>
             <button
-              onClick={() => signOut()}
+              onClick={() => signOutAndRedirect()}
               className="hover:text-blue-500 text-xl"
             >
               logout
