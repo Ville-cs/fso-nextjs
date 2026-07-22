@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2 className="text-4xl">Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <InputContainer>
