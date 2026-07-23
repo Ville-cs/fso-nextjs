@@ -44,14 +44,11 @@ export const blogsRelations = relations(blogs, ({ one, many }) => ({
   readingLists: many(readingLists),
 }));
 
-export const readingListUserRelations = relations(readingLists, ({ one }) => ({
+export const readingListsRelations = relations(readingLists, ({ one }) => ({
   user: one(users, {
     fields: [readingLists.userId],
     references: [users.id],
   }),
-}));
-
-export const readingListBlogRelations = relations(readingLists, ({ one }) => ({
   blog: one(blogs, {
     fields: [readingLists.blogId],
     references: [blogs.id],
