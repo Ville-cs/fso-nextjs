@@ -43,6 +43,13 @@
       "when": 1784556242357,
       "tag": "0005_easy_steel_serpent",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784795186611,
+      "tag": "0006_natural_exiles",
+      "breakpoints": true
     }
   ]
 }
