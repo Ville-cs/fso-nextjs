@@ -25,6 +25,7 @@ export const GET = async (_req: NextRequest) => {
           url: true,
         },
       },
+      readingLists: true,
     },
   });
   if (!user)
