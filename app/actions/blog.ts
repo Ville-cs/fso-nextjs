@@ -6,7 +6,7 @@ import { addBlog, likeBlog } from "../services/blogs";
 import { auth } from "@/auth";
 
 export const createBlog = async (
-  prevState: { error: string },
+  _prevState: { error: string },
   formData: FormData,
 ) => {
   const session = await auth();

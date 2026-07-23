@@ -20,7 +20,7 @@ export const users = pgTable("users", {
   token: text("token"),
 });
 
-export const readingList = pgTable("reading_list", {
+export const readingLists = pgTable("reading_lists", {
   id: serial("id").primaryKey(),
   userId: integer("user_id")
     .notNull()
@@ -35,9 +35,24 @@ export const usersRelations = relations(users, ({ many }) => ({
   blogs: many(blogs),
 }));
 
-export const blogsRelations = relations(blogs, ({ one }) => ({
+export const blogsRelations = relations(blogs, ({ one, many }) => ({
   user: one(users, {
     fields: [blogs.userId],
     references: [users.id],
+  }),
+  readingLists: many(readingLists),
+}));
+
+export const readingListUserRelations = relations(readingLists, ({ one }) => ({
+  user: one(users, {
+    fields: [readingLists.userId],
+    references: [users.id],
+  }),
+}));
+
+export const readingListBlogRelations = relations(readingLists, ({ one }) => ({
+  blog: one(blogs, {
+    fields: [readingLists.blogId],
+    references: [blogs.id],
   }),
 }));
