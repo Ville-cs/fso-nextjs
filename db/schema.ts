@@ -33,6 +33,7 @@ export const readingLists = pgTable("reading_lists", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   blogs: many(blogs),
+  readingLists: many(readingLists),
 }));
 
 export const blogsRelations = relations(blogs, ({ one, many }) => ({
