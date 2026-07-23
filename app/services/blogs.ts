@@ -1,6 +1,7 @@
 import { eq, ilike } from "drizzle-orm";
 import { db } from "@/db";
-import { blogs } from "@/db/schema";
+import { serverlessDb } from "@/db/serverless";
+import { blogs, readingLists } from "@/db/schema";
 import { getCurrentUser } from "./session";
 
 export const getBlogs = async (filter: string) => {
@@ -17,10 +18,15 @@ export const addBlog = async (title: string, author: string, url: string) => {
   if (!user) {
     throw new Error("Not logged in");
   }
-  if (user)
-    return await db
+  await serverlessDb.transaction(async (tx) => {
+    const [newBlog] = await tx
       .insert(blogs)
-      .values({ title, author, url, userId: user.id });
+      .values({ title, author, url, userId: user.id })
+      .returning({ id: blogs.id });
+    await tx
+      .insert(readingLists)
+      .values({ userId: user.id, blogId: newBlog.id });
+  });
 };
 
 export const getBlogById = async (id: number) => {
