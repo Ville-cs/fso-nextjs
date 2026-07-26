@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @plugin "@tailwindcss/typography"; */
 
 :root {
   --background: #ffffff;
@@ -29,4 +30,56 @@ body {
   .button {
     @apply py-5 px-10 text-3xl rounded-2xl hover:bg-green-900 bg-blue-900;
   }
+}
+
+.homepage h1 {
+  font-size: 2.15rem;
+  margin-top: 2em;
+}
+
+.homepage h2 {
+  font-size: 1.75rem;
+  margin-top: 1em;
+}
+
+.homepage p {
+  margin: 2em 0;
+  font-size: 1.5rem;
+}
+
+.homepage ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.homepage li {
+  font-size: 1.2rem;
+}
+
+.homepage hr {
+  margin-top: 2em;
+}
+
+.homepage a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.homepage a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.homepage blockquote {
+  margin: 2em 0;
+  padding: 1rem 1.25rem;
+  background: #1f2937;
+  border-left: 4px solid #60a5fa;
+  border-radius: 0.5rem;
+  color: #d1d5db;
+}
+
+.homepage blockquote p {
+  margin: 0;
 }
