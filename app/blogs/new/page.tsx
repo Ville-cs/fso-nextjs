@@ -63,7 +63,11 @@ const NewBlog = () => {
             {state.error}
           </p>
         )}
-        <button type="submit" className="button">
+        <button
+          type="submit"
+          className="button"
+          data-testid="create-blog-button"
+        >
           Create
         </button>
       </form>
