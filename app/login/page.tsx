@@ -12,22 +12,53 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const { showNotification } = useNotification();
 
+  // const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
+
+  //   const result = await signIn("credentials", {
+  //     username: formData.get("username"),
+  //     password: formData.get("password"),
+  //     redirect: false,
+  //   });
+
+  //   if (result?.error) {
+  //     setError("Invalid username or password");
+  //   } else {
+  //     showNotification("Logged in");
+  //     router.push("/");
+  //     router.refresh();
+  //   }
+  // };
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
+
     const formData = new FormData(e.currentTarget);
 
-    const result = await signIn("credentials", {
-      username: formData.get("username"),
-      password: formData.get("password"),
-      redirect: false,
-    });
+    try {
+      const result = await signIn("credentials", {
+        username: formData.get("username"),
+        password: formData.get("password"),
+        redirect: false,
+      });
 
-    if (result?.error) {
-      setError("Invalid username or password");
-    } else {
+      if (!result) {
+        setError("Unable to sign in. Please try again.");
+        return;
+      }
+
+      if (result.error) {
+        setError("Invalid username or password");
+        return;
+      }
+
       showNotification("Logged in");
       router.push("/");
       router.refresh();
+    } catch (err) {
+      console.error(err);
+      setError("An unexpected error occurred. Please try again.");
     }
   };
 
