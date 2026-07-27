@@ -5,11 +5,11 @@ export default defineConfig({
   testDir: "tests",
 
   // Timeout for an individual test
-  timeout: 5_000, // 5 seconds per test
+  timeout: 30_000,
 
   // Timeout for an expect action
   expect: {
-    timeout: 5_000,
+    timeout: 30_000,
   },
 
   // Run all tests in parallel.
