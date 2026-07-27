@@ -19,18 +19,25 @@ const Blogs = async ({
           name="filter"
           defaultValue={filter || ""}
           className="bg-white text-black mr-5 py-2"
+          data-testid="filter-input"
         />
-        <button type="submit" className="button p-5">
+        <button
+          type="submit"
+          className="button p-5"
+          data-testid="search-button"
+        >
           filter blogs by title
         </button>
       </form>
-      <ul>
+      <ul data-testid="blogs-list">
         {blogs.map((blog) => (
           <li
             key={blog.id}
             className="my-3 p-5 border hover:text-blue-400 text-2xl"
           >
-            <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
+            <Link href={`/blogs/${blog.id}`} data-testid="link">
+              {blog.title} | {blog.likes} likes
+            </Link>
           </li>
         ))}
       </ul>

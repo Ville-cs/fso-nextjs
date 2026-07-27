@@ -38,6 +38,7 @@ const NewBlog = () => {
             name="title"
             defaultValue={state.values?.title}
             required
+            id="title"
           />
         </InputContainer>
         <InputContainer>
@@ -47,6 +48,7 @@ const NewBlog = () => {
             name="author"
             defaultValue={state.values?.author}
             required
+            id="author"
           ></Input>
         </InputContainer>
         <InputContainer>
@@ -56,6 +58,7 @@ const NewBlog = () => {
             name="url"
             defaultValue={state.values?.url}
             required
+            id="url"
           ></Input>
         </InputContainer>
         {state.error && (

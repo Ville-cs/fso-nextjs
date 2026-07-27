@@ -19,11 +19,13 @@ const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const onReadingList = await isOnUserReadingList(blog.id);
 
   return (
-    <div>
-      <div className="text-5xl">{blog.title}</div>
+    <div data-testid="blog-detail">
+      <div className="text-5xl" data-testid="blog-title">
+        {blog.title}
+      </div>
       <Description>
         by
-        <Content> {blog.author}</Content>
+        <Content data-testid="blog-author"> {blog.author}</Content>
       </Description>
       <Description>
         read the blog here:
@@ -43,7 +45,11 @@ const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         <form action={addToReadingList} className="mt-5">
           <input type="hidden" name="blogId" value={blog.id} />
           <input type="hidden" name="userId" value={user.id} />
-          <button type="submit" className="button">
+          <button
+            type="submit"
+            className="button"
+            data-testid="add-to-reading-list-button"
+          >
             Add to your reading list
           </button>
         </form>

@@ -13,7 +13,7 @@ export const getUserReadingLists = async () => {
 
 export const getFilteredUserReadingLists = async (filter: boolean) => {
   const user = await getCurrentUser();
-  if (!user) return;
+  if (!user) return [];
   return await db.query.readingLists.findMany({
     where: and(eq(readingLists.userId, user.id), eq(readingLists.read, filter)),
     with: {

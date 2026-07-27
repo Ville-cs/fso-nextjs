@@ -30,6 +30,7 @@ export default function RegisterPage() {
             name="username"
             defaultValue={state.values?.username}
             required
+            id="username"
           />
         </InputContainer>
         <InputContainer>
@@ -39,6 +40,7 @@ export default function RegisterPage() {
             name="name"
             defaultValue={state.values?.name}
             required
+            id="name"
           />
         </InputContainer>
         <InputContainer>
@@ -49,23 +51,31 @@ export default function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            id="password"
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="confirmPassword">Confirm password</label>
+          <label htmlFor="confirm-password">Confirm Password</label>
           <Input
             type="password"
             name="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            id="confirm-password"
           />
         </InputContainer>
         {!passwordsMatch && (
-          <p style={{ color: "red" }}>Passwords do not match.</p>
+          <p style={{ color: "red" }} data-testid="passwordConfirm-error">
+            Passwords do not match.
+          </p>
         )}
-        {state.error && <p style={{ color: "red" }}>{state.error}</p>}
-        <button type="submit" disabled={!passwordsMatch} className="button">
+        {state.error && (
+          <p style={{ color: "red" }} data-testid="username-error">
+            {state.error}
+          </p>
+        )}
+        <button type="submit" className="button" data-testid="register-button">
           Register
         </button>
       </form>
