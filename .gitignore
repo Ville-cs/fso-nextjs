@@ -42,3 +42,7 @@ next-env.d.ts
 
 # http requests helpers
 rest*http
+
+# tests
+test-results*
+playwright-report*
