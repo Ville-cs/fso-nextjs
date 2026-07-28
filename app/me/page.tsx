@@ -27,13 +27,14 @@ const MyPage = async () => {
       </div>
       <div className="my-10 border-t border-gray-300" />
       <div data-testid="api-token-section">
-        <div className="mt-10 text-3xl">Token: {user.token ?? user.token}</div>
         {user.token ? (
           <div>
             <div className="mt-10 text-3xl" data-testid="token-display">
               Token:
+              <span className="text-2xl ml-3" data-testid="api-token">
+                {user.token}
+              </span>
             </div>
-            <div data-testid="api-token">{user.token}</div>
           </div>
         ) : (
           <div className="mt-10 text-3xl" data-testid="no-token-message">
