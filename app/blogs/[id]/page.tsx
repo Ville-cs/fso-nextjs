@@ -3,6 +3,7 @@ import { getBlogById } from "../../services/blogs";
 import { incrementBlogLikes } from "../../actions/blog";
 import Description from "./Description";
 import Content from "./Content";
+import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/app/services/session";
 import { addToReadingList } from "@/app/actions/readingList";
 import { isOnUserReadingList } from "@/app/services/readingLists";
@@ -37,9 +38,14 @@ const BlogPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       </Description>
       <form action={incrementBlogLikes}>
         <input type="hidden" name="id" value={blog.id} />
-        <button type="submit" className="button">
+        <Button
+          type="submit"
+          variant={"secondary"}
+          size={"lg"}
+          className={"text-2xl px-5 py-7"}
+        >
           Like this blog
-        </button>
+        </Button>
       </form>
       {user && !onReadingList ? (
         <form action={addToReadingList} className="mt-5">

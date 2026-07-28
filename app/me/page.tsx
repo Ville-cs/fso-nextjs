@@ -2,6 +2,7 @@ import { generateToken } from "../actions/users";
 import { getCurrentUser } from "../services/session";
 import { redirect } from "next/navigation";
 import ReadingList from "./ReadingList";
+import { Button } from "@/components/ui/button";
 
 const MyPage = async () => {
   const user = await getCurrentUser();
@@ -42,13 +43,15 @@ const MyPage = async () => {
           </div>
         )}
         <form action={generateToken} className="mt-10">
-          <button
+          <Button
             type="submit"
-            className="button"
+            className="text-2xl px-5 py-7"
             data-testid="generate-token-button"
+            variant={"secondary"}
+            size={"lg"}
           >
             Generate new token
-          </button>
+          </Button>
         </form>
       </div>
     </>

@@ -4,8 +4,10 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useNotification } from "../components/NotificationContext";
-import Input from "../components/Input";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import InputContainer from "../components/InputContainer";
+import { FieldLabel } from "@/components/ui/field";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -49,16 +51,21 @@ export default function LoginPage() {
       )}
       <form onSubmit={handleSubmit}>
         <InputContainer>
-          <label htmlFor="username">Username</label>
+          <FieldLabel htmlFor="username">Username</FieldLabel>
           <Input type="text" name="username" id="username" required />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="password">Password</label>
+          <FieldLabel htmlFor="password">Password</FieldLabel>
           <Input type="password" name="password" id="password" required />
         </InputContainer>
-        <button type="submit" className="button" data-testid="login-button">
+        <Button
+          type="submit"
+          data-testid="login-button"
+          variant={"secondary"}
+          size={"mySize"}
+        >
           Login
-        </button>
+        </Button>
       </form>
     </div>
   );

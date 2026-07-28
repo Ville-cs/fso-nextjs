@@ -1,5 +1,6 @@
 import { updateReadStatus } from "../actions/readingList";
 import { getFilteredUserReadingLists } from "../services/readingLists";
+import { Button } from "@/components/ui/button";
 
 const ReadingList = async () => {
   const unread = await getFilteredUserReadingLists(false);
@@ -25,19 +26,21 @@ const ReadingList = async () => {
         ) : (
           <ul>
             {unread.map((item) => (
-              <li key={item.id} className="my-3 p-5 border hover:text-blue-400">
+              <li key={item.id} className="my-3 p-5 border">
                 <p className="text-2xl">{item.blog.title}</p>
                 <p className="text-2xl">{item.blog.author}</p>
 
                 <form action={updateReadStatus}>
                   <input type="hidden" name="id" value={item.id} />
-                  <button
+                  <Button
                     type="submit"
-                    className="button"
+                    className="my-5"
                     data-testid="mark-read-"
+                    variant={"secondary"}
+                    size={"mySize"}
                   >
                     Mark as read
-                  </button>
+                  </Button>
                 </form>
               </li>
             ))}
@@ -49,11 +52,11 @@ const ReadingList = async () => {
         <h3 className="text-2xl">Read</h3>
 
         {noRead ? (
-          <p>No read items</p>
+          <p className="text-xl">No read items</p>
         ) : (
           <ul>
             {read.map((item) => (
-              <li key={item.id} className="my-3 p-5 border hover:text-blue-400">
+              <li key={item.id} className="my-3 p-5 border">
                 <p className="text-2xl">{item.blog.title}</p>
                 <p className="text-2xl">{item.blog.author}</p>
               </li>

@@ -4,8 +4,10 @@ import { useActionState, useEffect } from "react";
 import { createBlog } from "../../actions/blog";
 import { useRouter } from "next/navigation";
 import { useNotification } from "../../components/NotificationContext";
-import Input from "@/app/components/Input";
 import InputContainer from "@/app/components/InputContainer";
+import { Button } from "@/components/ui/button";
+import { FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 
 const NewBlog = () => {
   const [state, formAction] = useActionState(createBlog, {
@@ -32,7 +34,9 @@ const NewBlog = () => {
       <h2 className="text-5xl mb-10 text-center">Add a new blog</h2>
       <form action={formAction} className="flex-col items-center">
         <InputContainer>
-          <label htmlFor="title">Title</label>
+          <FieldLabel htmlFor="title" className="text-3xl">
+            Title
+          </FieldLabel>
           <Input
             type="text"
             name="title"
@@ -42,7 +46,9 @@ const NewBlog = () => {
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="author">Author</label>
+          <FieldLabel htmlFor="author" className="text-3xl">
+            Author
+          </FieldLabel>
           <Input
             type="text"
             name="author"
@@ -52,7 +58,9 @@ const NewBlog = () => {
           ></Input>
         </InputContainer>
         <InputContainer>
-          <label htmlFor="url">URL</label>
+          <FieldLabel htmlFor="url" className="text-3xl">
+            URL
+          </FieldLabel>
           <Input
             type="text"
             name="url"
@@ -66,13 +74,14 @@ const NewBlog = () => {
             {state.error}
           </p>
         )}
-        <button
+        <Button
           type="submit"
-          className="button"
           data-testid="create-blog-button"
+          variant={"secondary"}
+          size={"mySize"}
         >
           Create
-        </button>
+        </Button>
       </form>
     </div>
   );

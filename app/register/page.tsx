@@ -3,7 +3,9 @@
 import { registerUser } from "../actions/users";
 import { useActionState, useState } from "react";
 import InputContainer from "../components/InputContainer";
-import Input from "../components/Input";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { FieldLabel } from "@/components/ui/field";
 
 export default function RegisterPage() {
   const [password, setPassword] = useState("");
@@ -24,7 +26,7 @@ export default function RegisterPage() {
       <h2 className="text-4xl">Register</h2>
       <form action={actionState}>
         <InputContainer>
-          <label htmlFor="username">Username</label>
+          <FieldLabel htmlFor="username">Username</FieldLabel>
           <Input
             type="text"
             name="username"
@@ -34,7 +36,7 @@ export default function RegisterPage() {
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="name">Name</label>
+          <FieldLabel htmlFor="name">Name</FieldLabel>
           <Input
             type="text"
             name="name"
@@ -44,7 +46,7 @@ export default function RegisterPage() {
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="password">Password</label>
+          <FieldLabel htmlFor="password">Password</FieldLabel>
           <Input
             type="password"
             name="password"
@@ -55,7 +57,7 @@ export default function RegisterPage() {
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
           <Input
             type="password"
             name="confirmPassword"
@@ -75,9 +77,15 @@ export default function RegisterPage() {
             {state.error}
           </p>
         )}
-        <button type="submit" className="button" data-testid="register-button">
+        <Button
+          type="submit"
+          className="button"
+          data-testid="register-button"
+          variant={"secondary"}
+          size={"mySize"}
+        >
           Register
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -1,3 +1,11 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/components/ui/item";
 import { getBlogs } from "../services/blogs";
 import Link from "next/link";
 
@@ -14,31 +22,36 @@ const Blogs = async ({
     <div>
       <h2 className="text-5xl mr-20 my-10 text-center">Blogs</h2>
       <form action="/blogs" className="flex justify-center items-center mb-10">
-        <input
+        <Input
           type="text"
           name="filter"
           defaultValue={filter || ""}
-          className="bg-white text-black mr-5 py-2"
+          className="mr-5 py-2 w-xl"
           data-testid="filter-input"
         />
-        <button
+        <Button
           type="submit"
-          className="button p-5"
+          className="p-5 text-xl"
+          variant={"secondary"}
           data-testid="search-button"
         >
           filter blogs by title
-        </button>
+        </Button>
       </form>
       <ul data-testid="blogs-list">
         {blogs.map((blog) => (
-          <li
+          <Item
             key={blog.id}
             className="my-3 p-5 border hover:text-blue-400 text-2xl"
+            variant={"outline"}
           >
             <Link href={`/blogs/${blog.id}`} data-testid="link">
-              {blog.title} | {blog.likes} likes
+              <ItemContent>
+                <ItemTitle>{blog.title}</ItemTitle>
+                <ItemDescription>{blog.likes} likes</ItemDescription>
+              </ItemContent>
             </Link>
-          </li>
+          </Item>
         ))}
       </ul>
     </div>

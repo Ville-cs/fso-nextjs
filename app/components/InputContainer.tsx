@@ -1,13 +1,15 @@
-interface InputContainerProps {
+import { Field } from "@/components/ui/field";
+
+interface FieldContainerProps {
   children: React.ReactNode;
 }
 
-const InputContainer = ({ children }: InputContainerProps) => {
+const FieldContainer = ({ children }: FieldContainerProps) => {
   return (
-    <div className="text-3xl my-7 grid grid-cols-[120px_300px] items-center gap-4">
+    <Field className="my-7 grid grid-cols-[120px_300px] items-center gap-4">
       {children}
-    </div>
+    </Field>
   );
 };
 
-export default InputContainer;
+export default FieldContainer;
