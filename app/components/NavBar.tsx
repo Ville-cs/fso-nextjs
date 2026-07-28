@@ -13,7 +13,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="px-50 flex items-center gap-5 py-5 bg-gray-700">
+    <nav className="px-50 flex items-center gap-5 py-5 bg-background-secondary">
       <NavLink href="/">home</NavLink>
       {" | "}
       <NavLink href="/blogs">blogs</NavLink>
